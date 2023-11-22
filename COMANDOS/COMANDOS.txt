@@ -1,0 +1,10 @@
+Crear proyecto 
+composer create-project laravel/laravel nameproyect
+-------
+
+1.3.1 Instalacion de Laravel 10
+1.3.2 Instalacion de Bootstrap CSS
+1.3.3 Instalacion de React JS 18 
+1.3.4 Configuracion e integracion de laravel y React
+1.3.5 Definiendo el archivo principal App.jsx
+1.3.6 Integracion de Bootstrap CSS
