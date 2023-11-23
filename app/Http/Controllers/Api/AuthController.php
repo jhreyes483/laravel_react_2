@@ -17,9 +17,12 @@ class AuthController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->save();
-        return $user;
+        $user->password = Hash::make($request->password);
+        $user->save(); 
+        $token = $user->createToken('auth_token')->plainTextToken;
+
+
+        return ['user'=>$user,'token'=>$token ];
     }
 
     public function login(Request $request){
@@ -62,7 +65,7 @@ class AuthController extends Controller
             return  $this->responseApi(false, ["type" => "error", "content" => "Credenciales incorrectas"], []);
         }
         */
-        
+
         $data = [];
         $user = User::where('email', $request->email)->first();
         if (!$user ||  !Hash::check( $request->password, $user->password )) {
@@ -72,7 +75,7 @@ class AuthController extends Controller
             ], 401);
         }
   
-        $token = $user->createToken($divice)->plainTextToken;
+        $token = $user->createToken('auth_token')->plainTextToken;
         $data = response()->json([
             'status' => 'success',
             'authorisation' => [
@@ -84,15 +87,14 @@ class AuthController extends Controller
     }
 
     public function logout(Request $request){
-        $response["success"] = false;
-        $response["msg"] = 'no se ejecuto token';
-
-        auth()->user->tokens()->delete();
-        //auth()->user()->tokens()->delete();
-        $response["success"] = true;
-        $response["msg"] = 'Sesión cerrada';
-
-        return response()->json($response,200);
+        dd('aca');
+        $user =  auth('sanctum')->user();
+        if(!$user){
+            return ['msg'=>'usuario no autenticado'];
+        }else{
+            $user->tokens()->where('id', $user->currentAccessToken()->id)->delete();
+            return ['msg'=>'cerro session'];
+        }    
 
     }
 

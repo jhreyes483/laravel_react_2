@@ -28,12 +28,13 @@ Route::prefix('v1')->group(function(){
     //::auth
     Route::post('auth/register',[AuthController::class, 'register']);
     Route::get('auth/login',[AuthController::class, 'login']);
+ 
 
 
     // PRIVATE
     Route::group(['middleware' => 'auth:sanctum'], function(){
         //::auth
-        Route::post('/auth/logout',[AuthController::class, 'logout']);
+        Route::post('auth/logout',[AuthController::class, 'logout']);
 
         //::rol client
         Route::apiResource('/client/empresa',EmpresaClientController::class);
@@ -45,6 +46,9 @@ Route::prefix('v1')->group(function(){
         
     });
 
+    Route::group(['middleware' => 'auth:sanctum'], function(){
+       
+    });
 
 });
 
