@@ -17,7 +17,16 @@ Route::get('{any}', function(){
     return view('welcome');
 })->where('any','.*');
 
-"creacion de controllers y avilitar rutas api
+"creacion de controllers y avilitar rutas api publicas
 php artisan make:controller Api/FrontController
+php artisan make:controller Api/AuthController
+"
+
+"INSTALACION DE TOKEN
+php artisan make:controller Api/Client/EmpresaController
+
+php artisan make:controller Api/Admin/EmpresaController
+php artisan make:controller Api/Admin/UserController
+php artisan make:controller Api/Admin/CategoryController
 
 "

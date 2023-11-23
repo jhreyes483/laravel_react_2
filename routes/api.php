@@ -23,7 +23,20 @@ Route::prefix('v1')->group(function(){
     Route::get('auth/login',[AuthController::class, 'login']);
 
 
-// PRIVATE
+    // PRIVATE
+    Route::group(['middleware' => 'auth:sanctum'], function(){
+        //::auth
+        Route::post('/auth/logout',[AuthController::class, 'logout']);
+
+        //::rol client
+        Route::apiResource('/client/empresa',EmpresaController::class);
+
+        //::rol admin
+        Route::apiResource('/admin/user',UserController::class);
+        Route::apiResource('/admin/category',CategoryController::class);
+        Route::apiResource('/admin/empresa',EmpresaController::class);
+        
+    });
 
 
 });
