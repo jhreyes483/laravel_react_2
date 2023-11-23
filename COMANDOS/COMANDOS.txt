@@ -12,17 +12,12 @@ php artisan ui react
 npm i
 npm i --force
 "
----------------------------------
-1.3.2 Instalacion de Bootstrap CSS
+"configuracion de web para que todas las vistas cargen en welcome"
+Route::get('{any}', function(){
+    return view('welcome');
+})->where('any','.*');
 
---------------------------------
-1.3.3 Instalacion de React JS 18 
+"creacion de controllers y avilitar rutas api
+php artisan make:controller Api/FrontController
 
---------------------------------
-1.3.4 Configuracion e integracion de laravel y React
-
---------------------------------
-1.3.5 Definiendo el archivo principal App.jsx
-
-----------------------------------
-1.3.6 Integracion de Bootstrap CSS
+"

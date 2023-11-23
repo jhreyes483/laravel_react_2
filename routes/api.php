@@ -14,6 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::prefix('v1')->group(function(){
+    // PUBLIC 
+    //::public
+    Route::get('public/{slug}',[FrontController::class, 'categoria']);
+    //::auth
+    Route::get('auth/register',[AuthController::class, 'register']);
+    Route::get('auth/login',[AuthController::class, 'login']);
+
+
+// PRIVATE
+
+
+});
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
