@@ -26,7 +26,7 @@ Route::prefix('v1')->group(function(){
     //::public
     Route::get('public/{slug}',[FrontController::class, 'categoria']);
     //::auth
-    Route::get('auth/register',[AuthController::class, 'register']);
+    Route::post('auth/register',[AuthController::class, 'register']);
     Route::get('auth/login',[AuthController::class, 'login']);
 
 

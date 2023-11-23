@@ -30,3 +30,7 @@ php artisan make:controller Api/Admin/UserController
 php artisan make:controller Api/Admin/CategoryController
 
 "
+
+"CREACION DE REGISTROI Y AUTENTICACION POR sanctum
+https://laravel.com/docs/10.x/sanctum
+"
