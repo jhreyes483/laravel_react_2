@@ -37,7 +37,7 @@ Route::prefix('v1')->group(function(){
         Route::post('auth/logout',[AuthController::class, 'logout']);
 
         //::rol client
-        Route::apiResource('/client/empresa',EmpresaClientController::class);
+       // Route::apiResource('/client/empresa',EmpresaClientController::class);
 
         //::rol admin
         Route::apiResource('/admin/user',UserController::class);
